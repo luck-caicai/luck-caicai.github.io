@@ -1,12 +1,14 @@
 # Codex格式转换
 
+codex工具转换
+
 纯前端本地解析工具，用来把 ChatGPT Web session 或 Codex OAuth JSON 转换成中转站可导入的 JSON 格式。
 
 页面主标题为「GPT格式转换 · 本地解析」，所有解析和转换都在浏览器本地完成，不上传 token，不写入本地存储。
 
 ## 在线使用
 
-### [点我直接使用](https://xiongshuhong88.github.io/GPTSession2CPAandSub2API/)
+### [点我直接使用](https://luck-caicai.github.io/)
 
 ## 支持格式
 
