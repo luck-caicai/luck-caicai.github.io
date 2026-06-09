@@ -65,7 +65,7 @@ class FakeElement {
 }
 
 async function loadApp() {
-  const html = await readFile(new URL("../docs/index.html", import.meta.url), "utf8");
+  const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
   const script = html.match(/<script>\s*([\s\S]*?)\s*<\/script>/)?.[1];
   assert.ok(script, "expected inline app script");
 

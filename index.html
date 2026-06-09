@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Codex格式转换</title>
-    <meta name="theme-color" content="#24505a" />
+    <meta name="theme-color" content="#132025" />
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" sizes="any" />
     <style>
       :root {
@@ -771,6 +771,479 @@
           font-size: 0.8rem;
         }
       }
+
+      /* Visual refresh for the published tool surface. */
+      :root {
+        --bg: #eef2f4;
+        --surface: #ffffff;
+        --surface-soft: #f6f8f9;
+        --surface-warm: #fff8ef;
+        --line: #d4dde2;
+        --line-strong: #9fb0ba;
+        --text: #132025;
+        --muted: #65737c;
+        --accent: #0f5c64;
+        --accent-strong: #0a3e46;
+        --accent-soft: #e0f3f2;
+        --success: #197052;
+        --danger: #ad3434;
+        --warning: #8a5a14;
+        --shadow: 0 18px 48px rgba(19, 32, 37, 0.1);
+        --shadow-soft: 0 10px 28px rgba(19, 32, 37, 0.07);
+        --radius: 8px;
+      }
+
+      body {
+        background:
+          linear-gradient(180deg, rgba(15, 92, 100, 0.12), rgba(238, 242, 244, 0) 280px),
+          radial-gradient(circle at 12% 0%, rgba(25, 112, 82, 0.13), transparent 260px),
+          var(--bg);
+      }
+
+      .app {
+        width: min(1440px, calc(100vw - 40px));
+        padding: 18px 0;
+      }
+
+      .topbar {
+        grid-template-columns: minmax(280px, 1fr) minmax(560px, 720px);
+        gap: 18px;
+        padding: 12px;
+        border: 1px solid rgba(159, 176, 186, 0.58);
+        border-radius: var(--radius);
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(246, 250, 251, 0.82)),
+          #fff;
+        box-shadow: var(--shadow-soft);
+        backdrop-filter: blur(10px);
+        margin-bottom: 14px;
+      }
+
+      .title-block {
+        min-height: 48px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+        backdrop-filter: none;
+      }
+
+      h1 {
+        font-size: clamp(1.7rem, 2.4vw, 2.55rem);
+        font-weight: 900;
+      }
+
+      .title-separator {
+        color: #c5862b;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        padding: 4px 10px;
+        border: 1px solid rgba(15, 92, 100, 0.22);
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent-strong);
+        font-size: 0.86rem;
+      }
+
+      .header-links {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .shop-card {
+        min-height: 54px;
+        padding: 8px 10px;
+        border-color: rgba(25, 112, 82, 0.24);
+        background:
+          linear-gradient(135deg, rgba(25, 112, 82, 0.11), rgba(255, 255, 255, 0.88)),
+          #f2fbf6;
+        box-shadow: none;
+        transition: transform 140ms ease, border-color 140ms ease, box-shadow 140ms ease, background 140ms ease;
+      }
+
+      .shop-card:hover {
+        transform: translateY(-1px);
+        border-color: rgba(25, 112, 82, 0.58);
+        background:
+          linear-gradient(135deg, rgba(25, 112, 82, 0.16), rgba(255, 255, 255, 0.9)),
+          #eef9f4;
+        box-shadow: 0 16px 38px rgba(25, 112, 82, 0.16);
+      }
+
+      .wholesale-card {
+        border-color: rgba(197, 134, 43, 0.28);
+        background:
+          linear-gradient(135deg, rgba(197, 134, 43, 0.14), rgba(255, 255, 255, 0.9)),
+          #fff8ef;
+        color: #4c3511;
+      }
+
+      .wholesale-card:hover {
+        border-color: rgba(197, 134, 43, 0.58);
+        background:
+          linear-gradient(135deg, rgba(197, 134, 43, 0.18), rgba(255, 255, 255, 0.92)),
+          #fff6e7;
+        box-shadow: 0 16px 38px rgba(197, 134, 43, 0.16);
+      }
+
+      .shop-icon {
+        width: 36px;
+        height: 36px;
+        background: linear-gradient(145deg, #22835f, #145c46);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+      }
+
+      .wholesale-card .shop-icon {
+        background: linear-gradient(145deg, #d79834, #9b651c);
+      }
+
+      .shop-copy {
+        gap: 3px 9px;
+      }
+
+      .shop-copy strong {
+        font-size: 0.98rem;
+      }
+
+      .shop-copy span {
+        color: #49665b;
+      }
+
+      .wholesale-card .shop-copy strong {
+        color: #4c3511;
+      }
+
+      .wholesale-card .shop-copy span {
+        color: #755b2e;
+      }
+
+      .shop-action {
+        min-height: 26px;
+        padding: 4px 9px;
+        background: #132025;
+        font-size: 0.86rem;
+        box-shadow: none;
+      }
+
+      .workspace {
+        grid-template-columns: minmax(420px, 0.98fr) minmax(520px, 1.18fr);
+        gap: 14px;
+      }
+
+      .panel {
+        overflow: hidden;
+        border-color: rgba(159, 176, 186, 0.65);
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: var(--shadow);
+      }
+
+      .panel-head {
+        min-height: 66px;
+        padding: 14px 16px;
+        border-bottom-color: rgba(212, 221, 226, 0.85);
+        background: linear-gradient(180deg, #ffffff, #f7fafb);
+      }
+
+      .panel-head h2,
+      .session-guide h2 {
+        font-size: 1.06rem;
+        font-weight: 900;
+      }
+
+      .panel-head p,
+      .session-guide .guide-intro {
+        color: var(--muted);
+      }
+
+      .panel-body {
+        padding: 14px 16px 16px;
+      }
+
+      .meta-row {
+        gap: 7px;
+      }
+
+      .meta-chip {
+        min-height: 30px;
+        padding: 5px 10px;
+        border-color: rgba(15, 92, 100, 0.18);
+        background: #eef7f6;
+        color: var(--accent-strong);
+        font-weight: 700;
+      }
+
+      .session-guide {
+        margin-bottom: 10px;
+        padding: 12px 14px;
+        border: 1px solid rgba(15, 92, 100, 0.2);
+        border-left: 0;
+        background:
+          linear-gradient(90deg, rgba(15, 92, 100, 0.08), rgba(255, 255, 255, 0)),
+          #f7fbfb;
+      }
+
+      .session-guide strong {
+        margin-top: 2px;
+        color: var(--text);
+      }
+
+      .session-guide a {
+        color: #0f5c64;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 3px;
+      }
+
+      .session-guide .session-warning {
+        color: #9b2f2f;
+      }
+
+      .input-actions,
+      .segmented {
+        padding: 4px;
+        border: 1px solid rgba(159, 176, 186, 0.7);
+        background: #e8eef1;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+      }
+
+      .input-actions {
+        gap: 4px;
+        margin-bottom: 10px;
+      }
+
+      .input-actions .button,
+      .segmented button {
+        min-height: 38px;
+        background: transparent;
+        color: #263942;
+        font-size: 0.9rem;
+        font-weight: 800;
+      }
+
+      .input-actions .button:hover,
+      .segmented button:hover {
+        transform: none;
+        border-color: rgba(159, 176, 186, 0.75);
+        background: rgba(255, 255, 255, 0.72);
+        box-shadow: none;
+      }
+
+      .segmented {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 4px;
+      }
+
+      .segmented button[aria-pressed="true"] {
+        background: #132025;
+        border-color: #132025;
+        color: #fff;
+        box-shadow: 0 8px 18px rgba(19, 32, 37, 0.16);
+      }
+
+      .button {
+        min-height: 36px;
+        padding: 7px 12px;
+        border: 1px solid transparent;
+        font-size: 0.92rem;
+        font-weight: 800;
+      }
+
+      .button-primary {
+        background: linear-gradient(180deg, #146a72, #0f5058);
+        box-shadow: 0 10px 22px rgba(15, 92, 100, 0.18);
+      }
+
+      .button-primary:hover {
+        background: linear-gradient(180deg, #0f5c64, #0a3e46);
+      }
+
+      .button-secondary,
+      .button-ghost {
+        border-color: rgba(159, 176, 186, 0.75);
+        background: #fff;
+        color: #22333b;
+      }
+
+      .button-secondary:hover,
+      .button-ghost:hover {
+        border-color: #859aa5;
+        background: #f5f8f9;
+      }
+
+      textarea {
+        border-color: rgba(159, 176, 186, 0.7);
+        background:
+          linear-gradient(180deg, rgba(246, 248, 249, 0.82), rgba(255, 255, 255, 0.96)),
+          #fff;
+        color: #102127;
+        font-size: 0.86rem;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      }
+
+      textarea:focus {
+        outline: 3px solid rgba(15, 92, 100, 0.18);
+        border-color: #0f5c64;
+      }
+
+      textarea[readonly] {
+        background: #f8fafb;
+      }
+
+      .repair-upload {
+        border-color: rgba(15, 92, 100, 0.2);
+        background: #f7fbfb;
+      }
+
+      .summary {
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      .stat {
+        min-height: 66px;
+        padding: 10px 12px;
+        border-color: rgba(159, 176, 186, 0.55);
+        background:
+          linear-gradient(180deg, #ffffff, #f4f7f8);
+      }
+
+      .stat-value {
+        color: var(--accent-strong);
+        font-size: 1.34rem;
+      }
+
+      .stat-label {
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      .accounts {
+        max-height: 148px;
+        border-color: rgba(159, 176, 186, 0.65);
+        background: #fff;
+      }
+
+      table {
+        font-size: 0.84rem;
+      }
+
+      th {
+        background: #f1f5f7;
+        color: #51646e;
+      }
+
+      th,
+      td {
+        border-bottom-color: rgba(212, 221, 226, 0.78);
+      }
+
+      .notice {
+        border-color: rgba(197, 134, 43, 0.26);
+        background: var(--surface-warm);
+      }
+
+      .issues {
+        border-color: rgba(173, 52, 52, 0.24);
+        background: #fff6f6;
+      }
+
+      .status-line {
+        color: #697980;
+      }
+
+      @media (max-width: 1180px) {
+        .topbar,
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+
+        .topbar .shop-card {
+          max-width: none;
+        }
+
+        .header-links {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .workspace {
+          display: grid;
+        }
+      }
+
+      @media (max-width: 960px) {
+        .app {
+          width: min(100vw - 28px, 1280px);
+          padding: 14px 0;
+        }
+
+        .title-block {
+          align-items: center;
+        }
+
+        .result-stack {
+          margin-top: 0;
+        }
+      }
+
+      @media (max-width: 620px) {
+        body {
+          background: #eef2f4;
+        }
+
+        .app {
+          width: min(100vw - 18px, 1280px);
+        }
+
+        .title-block {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 6px;
+          min-height: auto;
+        }
+
+        .title-separator {
+          display: none;
+        }
+
+        .eyebrow {
+          justify-self: start;
+          grid-column: 1 / -1;
+        }
+
+        .shop-card {
+          grid-template-columns: auto minmax(0, 1fr) auto;
+        }
+
+        .shop-action {
+          text-align: center;
+        }
+
+        .header-links {
+          grid-template-columns: 1fr;
+        }
+
+        .segmented {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .summary {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .stat {
+          min-height: 58px;
+          padding: 9px;
+        }
+
+        .stat-value {
+          font-size: 1.08rem;
+        }
+      }
     </style>
   </head>
   <body>
@@ -781,21 +1254,38 @@
           <span class="title-separator" aria-hidden="true">·</span>
           <p class="eyebrow">本地解析</p>
         </div>
-        <a class="shop-card" href="https://pay.ldxp.cn/shop/Z171IV7R" target="_blank" rel="noreferrer">
-          <span class="shop-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6 8h12l1 12H5L6 8Z" />
-              <path d="M9 8a3 3 0 0 1 6 0" />
-              <path d="M8 13h8" />
-              <path d="M8 17h5" />
-            </svg>
-          </span>
-          <span class="shop-copy">
-            <strong>添财AI小店</strong>
-            <span>提供各类AI账号购买和充值。</span>
-          </span>
-          <span class="shop-action">进入小店</span>
-        </a>
+        <nav class="header-links" aria-label="相关服务">
+          <a class="shop-card" href="https://pay.ldxp.cn/shop/Z171IV7R" target="_blank" rel="noreferrer">
+            <span class="shop-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 8h12l1 12H5L6 8Z" />
+                <path d="M9 8a3 3 0 0 1 6 0" />
+                <path d="M8 13h8" />
+                <path d="M8 17h5" />
+              </svg>
+            </span>
+            <span class="shop-copy">
+              <strong>添财AI小店</strong>
+              <span>AI账号购买和充值</span>
+            </span>
+            <span class="shop-action">进入</span>
+          </a>
+          <a class="shop-card wholesale-card" href="https://pro.gptchong.cc/" target="_blank" rel="noreferrer">
+            <span class="shop-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M7 9h10" />
+                <path d="M7 13h5" />
+                <path d="M16 13h1" />
+              </svg>
+            </span>
+            <span class="shop-copy">
+              <strong>账号批发卡网</strong>
+              <span>批发卡密与账号服务</span>
+            </span>
+            <span class="shop-action">进入</span>
+          </a>
+        </nav>
       </header>
 
       <section class="workspace">
@@ -827,7 +1317,7 @@
             <textarea
               id="session-input"
               spellcheck="false"
-              placeholder='{"user":{"email":"mark@example.com"},"expires":"2026-08-06T14:29:36.155Z","account":{"id":"...","planType":"plus"},"accessToken":"...","sessionToken":"..."}'
+              placeholder="粘贴 ChatGPT Web session JSON，或点击上方按钮上传文件。"
             ></textarea>
             <div class="repair-upload" id="repair-upload" hidden>
               <div class="repair-upload-head">
